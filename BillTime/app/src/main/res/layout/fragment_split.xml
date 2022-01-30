@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/split_title"
+                style="@style/Widget.BillTime.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/split_the_bill"
+                android:textSize="32sp"
+                app:layout_constraintStart_toStartOf="@id/bill_amount"
+                app:layout_constraintTop_toTopOf="parent" />
+                
+            <ImageView
+                android:id="@+id/icon_currency_symbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_currency_symbol"
+                android:importantForAccessibility="no"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/bill_amount"
+                app:layout_constraintBottom_toBottomOf="@id/bill_amount"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/bill_amount"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/colorAccent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toEndOf="@id/icon_currency_symbol"
+                app:layout_constraintTop_toBottomOf="@id/split_title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/bill_amount_edit_text"
+                    android:hint="@string/bill_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/icon_num_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_num_people"
+                android:importantForAccessibility="no"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/num_people"
+                app:layout_constraintBottom_toBottomOf="@id/num_people" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/num_people"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/colorAccent"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/icon_num_people"
+                app:layout_constraintTop_toBottomOf="@id/bill_amount">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/num_people_edit_text"
+                    android:hint="@string/number_of_people"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/icon_round_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_round_up"
+                android:importantForAccessibility="no"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/round_up_switch"
+                app:layout_constraintBottom_toBottomOf="@id/round_up_switch"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/round_up_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/icon_round_up"
+                app:layout_constraintTop_toBottomOf="@id/num_people"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:checked="true"
+                android:text="@string/round_up_bill"/>
+
+            <Button
+                android:id="@+id/calculate_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorAccent"
+                app:layout_constraintTop_toBottomOf="@id/round_up_switch"
+                app:layout_constraintStart_toStartOf="@id/round_up_switch"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/calculate"
+                tools:targetApi="lollipop" />
+
+            <TextView
+                android:id="@+id/split_result"
+                style="@style/Widget.BillTime.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/calculate_button"
+                tools:text="Tip Amount: $10" />
+
+            <TextView
+                android:id="@+id/nav_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/split_result"
+                android:layout_marginTop="100dp"
+                android:text="@string/wanna_give_someone_a_tip"
+                style="@style/Widget.BillTime.TextView"/>
+
+            <Button
+                android:id="@+id/tip_calculator_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nav_question"
+                android:layout_marginTop="8dp"
+                android:text="@string/tip_calculator"
+                android:backgroundTint="@color/colorAccent"
+                tools:targetApi="lollipop" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+</layout>

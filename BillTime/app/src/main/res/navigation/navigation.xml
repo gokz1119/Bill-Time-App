@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/tipFragment">
+
+    <fragment
+        android:id="@+id/tipFragment"
+        android:name="com.example.billtime.TipFragment"
+        android:label="TipFragment"
+        tools:layout="@layout/fragment_tip">
+        <action
+            android:id="@+id/action_tipFragment_to_splitFragment"
+            app:destination="@id/splitFragment"
+            app:popUpTo="@id/navigation" />
+    </fragment>
+    <fragment
+        android:id="@+id/splitFragment"
+        android:name="com.example.billtime.SplitFragment"
+        android:label="SplitFragment"
+        tools:layout="@layout/fragment_split">
+        <action
+            android:id="@+id/action_splitFragment_to_tipFragment"
+            app:destination="@id/tipFragment"
+            app:popUpTo="@id/navigation" />
+    </fragment>
+</navigation>
